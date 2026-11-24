@@ -23,12 +23,13 @@
         <p class="auth-intro">Este acesso é demonstrativo. Os dados ficam somente neste navegador e não representam uma autenticação segura.</p>
         <div class="auth-tabs"><button id="login-tab" class="active" type="button">Entrar</button><button id="register-tab" type="button">Criar perfil</button></div>
         <form id="login-form"><label class="field">Perfil local<select id="login-profile" required></select></label><button class="primary-button full" type="submit">Entrar no painel <span>→</span></button><p class="field-hint">Não use informações bancárias reais neste aplicativo.</p></form>
-        <form id="register-form" hidden><label class="field">Nome fictício<input id="register-name" maxlength="32" placeholder="Ex.: Alex Rocha" required></label><label class="field">Identificador fictício<input id="register-handle" maxlength="20" placeholder="Ex.: alex.flow" required pattern="[a-zA-Z0-9._-]{3,20}"></label><button class="primary-button full" type="submit">Criar perfil fictício <span>→</span></button><p class="field-hint">Não informe nome completo real, senha, CPF ou dados de conta.</p></form>
+        <form id="register-form" hidden><label class="field">Nome fictício<input id="register-name" maxlength="32" placeholder="Ex.: Alex Rocha" required></label><label class="field">Identificador fictício<input id="register-handle" maxlength="20" placeholder="Ex.: alex.flow" required pattern="[a-zA-Z0-9._-]{3,20}"></label><label class="field">Banco da demonstração<select id="register-bank" required></select></label><button class="primary-button full" type="submit">Criar meu usuário <span>→</span></button><p class="field-hint">Não informe nome completo real, senha, CPF ou dados de conta.</p></form>
       </div>
     </div>
   </div>
 
   <div id="app" class="app" hidden>
+    <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
     <aside class="sidebar">
       <button class="sidebar-logo" data-view="dashboard" aria-label="FlowBank, painel">≈</button>
       <nav class="side-nav" aria-label="Navegação principal">
