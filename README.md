@@ -1,28 +1,28 @@
 # FlowBank
 
-Banco digital **inteiramente fictício** feito com HTML, CSS e JavaScript puro. Não há conexão com bancos, Pix, boletos reais ou redes de cartão.
+Banco digital **inteiramente fictício**, feito com HTML, CSS e JavaScript puro. Nenhuma operação movimenta dinheiro real, consulta bancos ou processa Pix e boletos verdadeiros.
 
-## Acesso demonstrativo
+## Acesso local
 
-Na primeira visita, crie um perfil com nome e identificador fictícios, escolha um banco de demonstração e defina uma senha local de pelo menos 12 caracteres. O aplicativo salva um verificador derivado com PBKDF2-HMAC-SHA-256, 600.000 iterações e salt aleatório; **não salva a senha em texto puro**. A entrada volta a pedir a senha após recarregar a página. Perfis criados antes desta atualização precisam definir uma senha no primeiro acesso.
+Crie um perfil com nome, identificador fictício e senha local de 12 a 128 caracteres. O navegador guarda um verificador PBKDF2-HMAC-SHA-256 com salt aleatório, e solicita a senha novamente após recarregar. Use HTTPS ou localhost para disponibilizar a Web Crypto API. Perfis antigos podem definir senha no primeiro acesso.
 
-Abra o site por **HTTPS ou localhost** para que a Web Crypto API esteja disponível. Não reutilize uma senha de serviço real. Não há recuperação de senha: como os dados são locais, perder a senha pode impedir o acesso pela interface.
+A senha funciona apenas como barreira de interface: os dados fictícios permanecem legíveis no `localStorage` e podem ser alterados por quem acessa o navegador. Não use senha, CPF, chaves Pix, números de cartão ou dados bancários reais. Não há recuperação de senha nem autenticação de produção.
 
-**Limite importante:** isto é apenas uma barreira de acesso na interface. Saldo, extrato e demais dados fictícios continuam em texto legível no `localStorage` e podem ser vistos ou modificados por quem tem acesso ao navegador e às ferramentas de desenvolvimento. A senha não oferece autenticação ou proteção de dados adequada para um banco real. Para isso seriam necessários backend, contas verificadas, sessões seguras e autorização no servidor.
+## Cartões e faturas
 
-## Monitoramento de gastos
+Em **Meus cartões**, cada perfil pode cadastrar até 12 cartões fictícios, com banco, cor, limite, bloqueio, dia de fechamento e vencimento próprios. Uma compra pode ser dividida em até 12 parcelas. Ela ocupa o limite disponível e aparece na fatura correspondente. **O saldo só é descontado quando a fatura é paga**, evitando débito duplo. Compras registradas nas versões anteriores continuam tratadas como já pagas.
 
-Em **Meus cartões**, cada perfil pode cadastrar até 12 cartões fictícios. Informe o nome do banco, escolha qualquer cor e defina um limite mensal simulado. Cada cartão tem bloqueio e limite próprios.
+## Planejamento
 
-Use **Registrar gasto** para lançar uma compra fictícia no cartão escolhido. O lançamento reduz o saldo disponível, aparece no extrato e atualiza os gráficos, o gasto do mês, o limite restante e as categorias. Cartões bloqueados não aceitam novos lançamentos. O extrato pode ser filtrado por cartão, texto, tipo e mês.
+- **Orçamentos** mensais por categoria, com notificações ao atingir 80% e 100%.
+- **Recorrências** para contas e assinaturas, com edição, pausa, pagamento simulado e calendário de vencimentos. Elas não debitam automaticamente.
+- **Metas** com reserva e retirada de valores fictícios.
+- Comparação das despesas do mês com o mês anterior.
 
-## Outras funcionalidades
+## Extrato e dados
 
-- Painel com saldo, gráfico de entradas e saídas em períodos de 3, 6 ou 12 meses e despesas por categoria.
-- Transferências e Pix simulados entre perfis locais ou para destinatários fictícios externos, com banco de destino.
-- Pagamento de boleto fictício, aceitando apenas códigos no formato `FLOW-2026-001`.
-- Registro de recebimentos fictícios, metas com reserva e retirada de valores e notificações.
-- Simulador de investimento com taxa hipotética e capitalização mensal.
-- Temas claro e escuro e layout responsivo.
+O extrato permite buscar, filtrar por tipo, mês e cartão, e editar categoria e nota pessoal de cada lançamento. O painel atualiza saldo, indicadores e gráficos a cada movimentação. Transferências e Pix simulados podem circular entre perfis locais ou destinatários fictícios. Há ainda boleto de teste no formato `FLOW-2026-001`, recebimentos fictícios, notificações, simulador de investimentos e temas claro e escuro.
 
-Os dados são salvos no `localStorage` sob a chave `flowbank-demo-v3`. Não há sincronização entre dispositivos; limpar os dados do navegador remove os perfis e movimentos. Não informe CPF, chaves Pix reais, números de cartão ou outros dados bancários. O simulador de investimento é uma projeção matemática nominal e não constitui recomendação financeira.
+Em **Planejamento → Dados fictícios**, exporte um backup JSON do perfil sem o verificador de senha. A importação cria um novo perfil com uma nova senha local. **Reiniciar perfil** apaga os lançamentos e os dados de planejamento daquele perfil, preservando a senha e um cartão inicial. Os dados ficam apenas neste navegador sob `flowbank-demo-v4`; não há sincronização entre dispositivos.
+
+O simulador de investimentos é uma projeção matemática nominal e não constitui recomendação financeira.
