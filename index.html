@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#091225">
+  <meta name="description" content="FlowBank, uma experiência fictícia de banco digital para explorar suas finanças em uma simulação local.">
+  <title>FlowBank — Sua vida financeira em movimento</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="auth-screen" class="auth-screen" hidden>
+    <div class="auth-visual">
+      <div class="auth-top"><span class="logo-mark">≈</span><span class="logo-word">flow<span>bank</span></span></div>
+      <div class="auth-orbit"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><span>F</span></div>
+      <div class="auth-copy"><p class="eyebrow">SEU DINHEIRO. SEU FLUXO.</p><h1>Uma nova forma de ver suas finanças.</h1><p>Explore cada possibilidade em um ambiente bancário totalmente fictício.</p></div>
+      <div class="auth-disclaimer">Simulação local · Nenhuma transação financeira real</div>
+    </div>
+    <div class="auth-form-wrap">
+      <div class="auth-form">
+        <p class="eyebrow">BEM-VINDO AO FLOWBANK</p>
+        <h2 id="auth-title">Entre na demonstração.</h2>
+        <p class="auth-intro">Este acesso é demonstrativo. Os dados ficam somente neste navegador e não representam uma autenticação segura.</p>
+        <div class="auth-tabs"><button id="login-tab" class="active" type="button">Entrar</button><button id="register-tab" type="button">Criar perfil</button></div>
+        <form id="login-form"><label class="field">Perfil local<select id="login-profile" required></select></label><button class="primary-button full" type="submit">Entrar no painel <span>→</span></button><p class="field-hint">Não use informações bancárias reais neste aplicativo.</p></form>
+        <form id="register-form" hidden><label class="field">Nome fictício<input id="register-name" maxlength="32" placeholder="Ex.: Alex Rocha" required></label><label class="field">Identificador fictício<input id="register-handle" maxlength="20" placeholder="Ex.: alex.flow" required pattern="[a-zA-Z0-9._-]{3,20}"></label><button class="primary-button full" type="submit">Criar perfil fictício <span>→</span></button><p class="field-hint">Não informe nome completo real, senha, CPF ou dados de conta.</p></form>
+      </div>
+    </div>
+  </div>
+
+  <div id="app" class="app" hidden>
+    <aside class="sidebar">
+      <button class="sidebar-logo" data-view="dashboard" aria-label="FlowBank, painel">≈</button>
+      <nav class="side-nav" aria-label="Navegação principal">
+        <button class="side-link active" data-view="dashboard" title="Painel" aria-label="Painel">⌂</button>
+        <button class="side-link" data-view="transactions" title="Extrato" aria-label="Extrato">▤</button>
+        <button class="side-link" data-view="cards" title="Cartões" aria-label="Cartões">▣</button>
+        <button class="side-link" data-view="goals" title="Metas" aria-label="Metas">◎</button>
+        <button class="side-link" data-view="investments" title="Investimentos" aria-label="Investimentos">⌁</button>
+      </nav>
+      <div class="side-bottom"><button id="theme-side" class="side-link" aria-label="Alternar tema" title="Alternar tema">☼</button><button id="logout-side" class="side-link" aria-label="Sair" title="Sair">⇥</button></div>
+    </aside>
+
+    <div class="workspace">
+      <header class="topbar">
+        <div class="topbar-start"><span class="topbar-brand">flow<span>bank</span></span><span class="topbar-divider"></span><span id="breadcrumb">Visão geral</span></div>
+        <div class="topbar-end"><span class="demo-pill"><i></i> AMBIENTE DEMO</span><button id="theme-top" class="round-button" aria-label="Alternar tema" title="Alternar tema">☼</button><button id="notifications-button" class="round-button notification-trigger" aria-label="Notificações" title="Notificações">♧<b id="notification-count"></b></button><button id="profile-button" class="profile-button"><span id="avatar">FB</span><span id="profile-name">Perfil</span><span>⌄</span></button></div>
+      </header>
+      <main id="main-content" tabindex="-1"></main>
+    </div>
+
+    <nav class="mobile-nav" aria-label="Navegação móvel">
+      <button data-view="dashboard" aria-label="Painel">⌂<span>Início</span></button>
+      <button data-view="transactions" aria-label="Extrato">▤<span>Extrato</span></button>
+      <button data-view="cards" aria-label="Cartões">▣<span>Cartões</span></button>
+      <button data-view="goals" aria-label="Metas">◎<span>Metas</span></button>
+      <button data-view="investments" aria-label="Simulador">⌁<span>Simular</span></button>
+    </nav>
+  </div>
+
+  <div id="popover-root"></div>
+  <div id="modal-root"></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js" defer></script>
+</body>
+</html>
