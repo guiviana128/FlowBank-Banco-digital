@@ -10,7 +10,9 @@ A senha funciona apenas como barreira de interface: os dados fictícios permanec
 
 ## Cartões e faturas
 
-Em **Meus cartões**, cada perfil pode cadastrar até 12 cartões fictícios, com banco, cor, limite, bloqueio, dia de fechamento e vencimento próprios. Uma compra pode ser dividida em até 12 parcelas. Ela ocupa o limite disponível e aparece na fatura correspondente. **O saldo só é descontado quando a fatura é paga**, evitando débito duplo. Compras registradas nas versões anteriores continuam tratadas como já pagas.
+Em **Meus cartões**, cada perfil pode cadastrar até 12 cartões fictícios, com banco, cor, tipo (crédito ou débito) e bloqueio próprios. No crédito, defina limite, fechamento e vencimento; uma compra pode ser dividida em até 12 parcelas, ocupa o limite e entra nas faturas. **O saldo só é descontado quando a fatura é paga**, evitando débito duplo. No débito, cada compra desconta o saldo imediatamente e atualiza extrato, gráficos e gastos por categoria. Compras registradas nas versões anteriores continuam tratadas como já pagas.
+
+No painel inicial, os cartões alternam automaticamente a cada **20 segundos**. As setas permitem trocar manualmente; o botão Pausar interrompe a rotação. A troca automática também para enquanto o cartão está em foco, sob o ponteiro, com uma janela de compra aberta ou quando o navegador solicita movimento reduzido.
 
 ## Planejamento
 
